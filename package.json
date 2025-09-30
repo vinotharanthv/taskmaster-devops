@@ -1,0 +1,27 @@
+{
+  "name": "taskmaster-devops",
+  "version": "1.0.0",
+  "description": "A DevOps pipeline project with CI/CD",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "devops",
+    "nodejs",
+    "express",
+    "ci-cd"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^6.3.4"
+  }
+}
