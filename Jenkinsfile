@@ -24,13 +24,13 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+
+         stage('Deploy') {
             steps {
-                echo 'Deploying the app...'
-                sh 'node index.js'  // or your start command
-            }
-        }
+                 echo 'Deploying the app...'
+                 sh 'node app.js'
     }
+}
 
     post {
         success {
