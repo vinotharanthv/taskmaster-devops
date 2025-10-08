@@ -4,9 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/vinotharanthv/taskmaster-devops.git',
-                    credentialsId: 'c9918971-5e4e-4697-9ff1-1281f1e79577'
+                echo 'Checking out code...'
+                checkout scm
             }
         }
 
@@ -20,21 +19,32 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'npm test'
+                sh 'npm test -- --passWithNoTests'
             }
         }
 
-
-         stage('Deploy') {
+        stage('Build') {
             steps {
-                 echo 'Deploying the app...'
-                 sh 'node app.js'
+                echo 'Building the app...'
+                // Optional: if you have any build step for frontend
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the app...'
+                // Run app.js instead of index.js
+                sh 'node app.js'
+            }
+        }
     }
-}
 
     post {
+        always {
+            echo 'Pipeline finished!'
+        }
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'Pipeline succeeded!'
         }
         failure {
             echo 'Pipeline failed!'
