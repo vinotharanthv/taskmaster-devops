@@ -1,18 +1,31 @@
 pipeline {
     agent any
 
+    environment {
+        NODE_ENV = 'production'
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out code...'
-                checkout scm
+                echo 'Checking out code from Git...'
+                git url: 'https://github.com/vinotharanthv/taskmaster-devops.git', branch: 'main'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                echo 'Installing dependencies...'
+                echo 'Installing npm dependencies...'
                 sh 'npm install'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the app...'
+                // If you have a build script, uncomment this
+                // sh 'npm run build'
+                echo 'No build script defined, skipping build step.'
             }
         }
 
@@ -23,22 +36,13 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Deploy') {
             steps {
-                echo 'Building the app...'
-                // Optional: if you have any build step for frontend
+                echo 'Starting the app...'
+                sh 'node app.js'
             }
         }
-
-        
-         stage('Deploy') {
-             steps {
-                echo 'Deploying the app...'
-                sh 'npm start'
-  
     }
-}
-
 
     post {
         always {
