@@ -6,7 +6,7 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/vinotharanthv/taskmaster-devops.git',
-                    credentialsId: 'YOUR_CREDENTIAL_ID'
+                    credentialsId: 'c9918971-5e4e-4697-9ff1-1281f1e79577'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the app...'
-                sh 'node index.js'  // adjust if you use PM2 or Docker
+                sh 'node index.js'  // or your start command
             }
         }
     }
