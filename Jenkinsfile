@@ -31,17 +31,14 @@ pipeline {
         }
 
         
-          stage('Deploy') {
-            steps {
+         stage('Deploy') {
+             steps {
                 echo 'Deploying the app...'
-                    sh 'npm start'
+                sh 'npm start'
   
     }
 }
-       sh 'node app.js'
-            }
-        }
-    }
+
 
     post {
         always {
