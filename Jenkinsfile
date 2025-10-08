@@ -30,11 +30,13 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+         stage('Deploy') {
             steps {
                 echo 'Deploying the app...'
-                // Run app.js instead of index.js
                 sh 'node app.js'
+    }
+}
+       sh 'node app.js'
             }
         }
     }
