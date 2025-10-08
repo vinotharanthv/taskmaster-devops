@@ -30,10 +30,12 @@ pipeline {
             }
         }
 
-         stage('Deploy') {
+        
+          stage('Deploy') {
             steps {
                 echo 'Deploying the app...'
-                sh 'node app.js'
+                    sh 'npm start'
+  
     }
 }
        sh 'node app.js'
